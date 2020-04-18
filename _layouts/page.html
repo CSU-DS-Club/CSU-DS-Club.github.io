@@ -83,7 +83,7 @@ layout: base
 
 
         <div class="page__content">
-        {%- if _article_header_type == 'overlay' or _article_header_type == 'cover' -%}
+        {%- if _article_header_type == 'overlay' or _article_header_type == 'cover' or _article_header_type == 'profile' -%}
 
           {%- if _article_header_type == 'overlay' -%}
 
@@ -173,6 +173,89 @@ layout: base
               {%- assign _header_image_src = __return -%}
               <img class="article__header--cover" src="{{ _header_image_src }}"></img>
             {%- endif -%}
+
+          {%- elsif _article_header_type == 'profile' -%}
+
+            {%- assign _article_header_height = page.article_header.height | default: layout.article_header.height -%}
+            {%- assign _article_header_align = page.article_header.align | default: layout.article_header.align | default: site.data.variables.default.page.article_header.align -%}
+            {%- assign _article_header_theme = page.article_header.theme | default: layout.article_header.theme | default: site.data.variables.default.page.article_header.theme -%}
+
+            {%- if page.article_header.background_image.src -%}
+              {%- assign _header_background_image_src = page.article_header.background_image.src -%}
+            {%- elsif page.article_header.background_image != false and page.cover -%}
+              {%- assign _header_background_image_src = page.cover -%}
+            {%- endif -%}
+
+            {%- if page.article_header.background_image.gradient -%}
+              {%- assign _header_background_image = page.article_header.background_image.gradient -%}
+              {%- if _header_background_image_src -%}
+                {%- assign _header_background_image = _header_background_image | append: ',' -%}
+              {%- endif -%}
+            {%- endif -%}
+
+            {%- if _header_background_image_src -%}
+              {%- include snippets/get-nav-url.html path=_header_background_image_src -%}
+              {%- assign _header_background_image_src = __return -%}
+              {%- assign _header_background_image = _header_background_image
+                | append: 'url(' | append: _header_background_image_src  | append: ')'-%}
+            {%- endif -%}
+
+            {%- assign _header_style = 'background-image:' | append: _header_background_image | append: ';' -%}
+
+            {%- if page.article_header.background_color -%}
+              {%- assign _header_style = _header_style | append: 'background-color:' | append: page.article_header.background_color | append: ';' -%}
+            {%- endif -%}
+
+            {%- if _article_header_height -%}
+              {%- assign _header_style = _header_style | append: 'min-height:' | append: _article_header_height | append: ';' -%}
+            {%- endif -%}
+
+            <div class="article__header--profile">
+
+            {%- if _article_header_theme == 'light' -%}
+              {%- if _article_header_align == 'center' -%}
+                <div class="hero hero--center hero--light profile" style="{{ _header_style }}">
+              {%- else -%}
+                <div class="hero hero--light profile" style="{{ _header_style }}">
+              {%- endif -%}
+            {%- elsif _article_header_theme == 'dark' -%}
+              {%- if _article_header_align == 'center' -%}
+                <div class="hero hero--center hero--dark profile" style="{{ _header_style }}">
+              {%- else -%}
+                <div class="hero hero--dark profile" style="{{ _header_style }}">
+              {%- endif -%}
+            {%- else -%}
+              {%- if _article_header_align == 'center' -%}
+                <div class="hero hero--center profile" style="{{ _header_style }}">
+              {%- else -%}
+                <div class="hero profile" style="{{ _header_style }}">
+              {%- endif -%}
+            {%- endif -%}
+                <div class="hero__content">
+                  {%- if _full_width == false -%}
+                    <div class ="main">
+                  {%- endif -%}
+                    {%- include article-info.html article=page semantic=false -%}
+                    {%- include article-header.html article=page semantic=false -%}
+                    {%- if page.excerpt -%}
+                      <p class="profile__excerpt">{{ page.excerpt | strip_html | strip_newlines | strip | truncate: _article_header_excerpt_truncate }}</p>
+                    {%- endif -%}
+                    {%- if page.article_header.actions -%}
+                      <ul class="menu">
+                        {%- for _action in page.article_header.actions -%}
+                          {%- include snippets/get-nav-url.html path=_action.url -%}
+                          {%- assign _url = __return -%}
+                          {%- assign _type = _action.type | default: 'info' -%}
+                          <li><a class="button button--{{ _type }} button--rounded button--xl" href="{{ _url }}">{{ _action.text }}</a></li>
+                        {%- endfor -%}
+                      </ul>
+                    {%- endif -%}
+                  {%- if _full_width == false -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            </div>
           {%- endif -%}
 
         {%- endif -%}
@@ -201,7 +284,7 @@ layout: base
                   <article>
                 {%- endif -%}
 
-                {%- if _article_header_type == 'overlay' or page.article_header == false -%}
+                {%- if _article_header_type == 'overlay' or page.article_header == false or _article_header_type == 'profile' -%}
                   {%- include article-header.html article=page html=false -%}
                   {%- include article-info.html article=page html=false -%}
                 {%- else -%}

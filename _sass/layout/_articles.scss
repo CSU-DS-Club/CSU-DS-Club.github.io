@@ -13,5 +13,10 @@
         font-size: map-get($base, font-size-sm);
       }
     }
+    & > .profile {
+      &, .card__header {
+        font-size: map-get($base, font-size-sm);
+      }
+    }
   }
 }

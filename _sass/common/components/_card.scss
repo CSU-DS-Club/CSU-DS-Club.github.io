@@ -74,6 +74,43 @@
     @extend .text--light;
     background: rgba(#fff, .4);
   }
+  & > .profile {
+    position: absolute;
+    width: 100%;
+    max-height: 100%;
+    padding: map-get($spacers, 2);
+    a {
+      text-decoration: none !important;
+    }
+  }
+  & > .profile, & > .profile--top {
+    top: 0;
+    bottom: auto;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  & > .profile--bottom {
+    top: auto;
+    bottom: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: inherit;
+  }
+  & > .profile--full {
+    top: 0;
+    bottom: 0;
+  }
+  & > .profile, & > .profile--dark {
+    @extend .text--dark;
+    background-color: rgba(#000, .4);
+  }
+  & > .profile--light {
+    @extend .text--light;
+    background: rgba(#fff, .4);
+  }
 }
 
 .card--clickable {
