@@ -37,7 +37,7 @@ article_header:
 
   <tr>
     <td align="center" width="50%" style="border: none;"><img class="shadow" src="/images/home/competitions/KDD didi.png" width="500" height="150" /></td>
-    <td align="center" width="50%" style="border: none;"><a href="https://www.biendata.com/competition/kdd_didi/"><font color="black">KDD Cup 2020 滴滴 订单分配 & 车辆调度</font></a><br><code class='info highlighter-rouge'>时空数据挖掘</code></td>
+    <td align="center" width="50%" style="border: none;"><a href="https://www.biendata.com/competition/kdd_didi/"><font color="black">KDD Cup 2020 滴滴 订单分配 & 车辆调度</font></a><br><code class='info highlighter-rouge'>数据挖掘</code></td>
   </tr>
   
   <tr>
@@ -52,7 +52,7 @@ article_header:
 
   <tr>
     <td align="center" width="50%" style="border: none;"><img class="shadow" src="/images/home/competitions/tencent.png" width="500" height="150" /></td>
-    <td align="center" width="50%" style="border: none;"><a href="https://algo.qq.com/index.html"><font color="black">2020 腾讯广告算法大赛</font></a><br><code class='info highlighter-rouge'>AutoML</code></td>
+    <td align="center" width="50%" style="border: none;"><a href="https://algo.qq.com/index.html"><font color="black">2020 腾讯广告算法大赛</font></a><br><code class='info highlighter-rouge'>数据挖掘</code></td>
   </tr>
 
   <tr>
