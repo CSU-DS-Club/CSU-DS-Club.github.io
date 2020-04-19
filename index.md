@@ -41,7 +41,7 @@ article_header:
   </tr>
   
   <tr>
-    <td align="center" width="50%" style="border: none;"><img class="shadow" src="/images/home/competitions/kdd automl.png" width="500" height="150" /></td>
+    <td align="center" width="50%" style="border: none;"><img class="shadow" src="/images/home/competitions/KDD automl.png" width="500" height="150" /></td>
     <td align="center" width="50%" style="border: none;"><a href="https://www.automl.ai/competitions/3"><font color="black">KDD Cup 2020 AutoGraph Challenge</font></a><br><code class='info highlighter-rouge'>AutoML</code></td>
   </tr>
 
