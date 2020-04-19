@@ -3,7 +3,7 @@ layout: article
 # articles:
 #   excerpt_type: html
 # layout: article
-title: CSU Data Science Club
+title: ⛏CSU Data Science Club
 mode: immersive
 header:
   theme: dark
